@@ -3,7 +3,7 @@
 import { client } from "@/sanity/lib/client";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import ProtectedRoute from "../protectedRoute/page";
+import ProtectedRoute from "../components/protectedRoute";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 
@@ -90,6 +90,7 @@ export default function AdminDashboard() {
       );
       Swal.fire("Updated", `Order marked as ${newStatus}.`, "success");
     } catch (error) {
+      console.error("Failed to change status:", error);
       Swal.fire("Error", "Failed to change status", "error");
     }
   };
